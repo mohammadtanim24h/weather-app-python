@@ -9,4 +9,9 @@ url = f"https://api.weatherapi.com/v1/current.json?key=0039ba140f3348fbb3f447162
 # Making the request using the user input
 r = req.get(url)
 weather = r.json()
-print(weather["current"])
+try:
+    print(weather["current"])
+
+except:
+    if weather["error"]["code"] == 1006:
+        print(weather["error"]["message"], "Please enter a correct location.")
